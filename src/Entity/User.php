@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -35,7 +36,7 @@ class User
     private ?int $challenges_realised = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTime $created_at = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserChallenge::class)]
     private Collection $Challenges;
@@ -45,7 +46,7 @@ class User
         $this->Challenges = new ArrayCollection();
         $this->score = 0;
         $this->challenges_realised = 0;
-        $this->created_at = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', strtotime('now'));
+        $this->created_at = new DateTime('NOW');
     }
 
     public function getId(): ?int
