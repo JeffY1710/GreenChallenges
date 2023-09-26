@@ -28,10 +28,10 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?int $score = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?int $challenges_realised = null;
 
     #[ORM\Column]
@@ -43,6 +43,9 @@ class User
     public function __construct()
     {
         $this->Challenges = new ArrayCollection();
+        $this->score = 0;
+        $this->challenges_realised = 0;
+        $this->created_at = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', strtotime('now'));
     }
 
     public function getId(): ?int
