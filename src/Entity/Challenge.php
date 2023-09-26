@@ -32,6 +32,10 @@ class Challenge
     #[ORM\Column]
     private ?int $points = null;
 
+    #[ORM\ManyToOne(inversedBy: 'UserChallenge')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?UserChallenge $userChallenge = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +109,18 @@ class Challenge
     public function setPoints(int $points): static
     {
         $this->points = $points;
+
+        return $this;
+    }
+
+    public function getUserChallenge(): ?UserChallenge
+    {
+        return $this->userChallenge;
+    }
+
+    public function setUserChallenge(?UserChallenge $userChallenge): static
+    {
+        $this->userChallenge = $userChallenge;
 
         return $this;
     }
