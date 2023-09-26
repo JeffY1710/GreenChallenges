@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +36,14 @@ class User
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserChallenge::class)]
+    private Collection $Challenges;
+
+    public function __construct()
+    {
+        $this->Challenges = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +130,36 @@ class User
     public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, UserChallenge>
+     */
+    public function getChallenges(): Collection
+    {
+        return $this->Challenges;
+    }
+
+    public function addChallenge(UserChallenge $challenge): static
+    {
+        if (!$this->Challenges->contains($challenge)) {
+            $this->Challenges->add($challenge);
+            $challenge->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChallenge(UserChallenge $challenge): static
+    {
+        if ($this->Challenges->removeElement($challenge)) {
+            // set the owning side to null (unless already changed)
+            if ($challenge->getUser() === $this) {
+                $challenge->setUser(null);
+            }
+        }
 
         return $this;
     }
