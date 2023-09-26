@@ -17,7 +17,7 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique:true)]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
