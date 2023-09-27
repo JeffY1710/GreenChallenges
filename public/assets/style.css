@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    transition-duration: 0.5s;
+    font-family: Skia;
+}
+
+body {
+    background-color: #e9dab9;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+}
+
+form {
+    font-size: large;
+    color: #33271e;
+    margin: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form input {
+    color: #33271e;
+    font-size: medium;
+    margin-bottom: 10px;
+    background-color: #baab8a;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+
+form label {
+    margin: 10px;
+}
+
+.button_nav {
+    background-color: #336a20;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 10px;
+    border: solid;
+    border-color: white;
+    border-width: 1px;"
+}
+
+.button_nav:hover {
+    background-color: #5f934d;
+    scale: 1.1;
+}
+
+.logo {
+    background-image: url(https://media.discordapp.net/attachments/301039123160891402/1156298404389982290/logo_green.png?ex=6514764e&is=651324ce&hm=cbb674f1916244b2dc191e83560524b943e3952ce1d9f4668af34383b267235c&=&width=2160&height=530);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 50px;
+    width: 500px;
+    margin: 10px;"
+}
+
+.nav {
+    background-color: #5f934d;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title\.h1 {
+    font-family: Skia;
+    margin-bottom: 30px
+}
+
+.button_valider {
+    background-color: #336a20;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+    margin: 20px
+}
+
+.button_valider:hover {
+    background-color: #5f934d;
+}
+
+form a {
+    font-size: small;
+    color: #33271e
+}
+
+
+.pannel_challenge {
+    padding: 100px;
+    border-radius: 30px;
+    background-color: #decca5;
+    height: 500px;
+    width: 70%;
+}
+
+a {
+    outline: none;
+    color : white;
+    text-decoration: none;
+}
