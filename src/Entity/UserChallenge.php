@@ -26,7 +26,7 @@ class UserChallenge
     private ?\DateTimeInterface $date_fin_obligatoire = null;
 
     #[ORM\ManyToOne(inversedBy: 'Challenges')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'userChallenge', targetEntity: Challenge::class)]

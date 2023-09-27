@@ -33,7 +33,7 @@ class Challenge
     private ?int $points = null;
 
     #[ORM\ManyToOne(inversedBy: 'UserChallenge')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?UserChallenge $userChallenge = null;
 
     public function getId(): ?int
