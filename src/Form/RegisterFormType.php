@@ -4,6 +4,8 @@ namespace App\Form;
 
 use PhpParser\Node\Expr\BinaryOp\Identical;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -16,6 +18,11 @@ class RegisterFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $roles = array(
+            'Administrateur' => 'ROLE_ADMIN',
+            'Utilisateur' => 'ROLE_USER'
+        );
+
         $builder
             ->add('username', TextType::class, [
                 'label' => 'Nom',
@@ -42,6 +49,13 @@ class RegisterFormType extends AbstractType
                 ],
                 'invalid_message' => 'The password fields must match.',
                 'required' => true,
+            ])
+            ->add('roles', ChoiceType::class,[
+                'label' => 'Roles :',
+                'choices' => $roles,
+                'multiple'  => true,
+                'expanded' => true,
+                'required' => true
             ])
             ->add('Submit', SubmitType::class, [
                 'label' => "S'inscrire",
