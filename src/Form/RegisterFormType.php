@@ -43,7 +43,7 @@ class RegisterFormType extends AbstractType
                 'invalid_message' => 'The password fields must match.',
                 'required' => true,
             ])
-            ->add('Valider', SubmitType::class, [
+            ->add('Submit', SubmitType::class, [
                 'label' => "S'inscrire",
                 'attr' => ['class' => 'button_valider2'],
             ]);
