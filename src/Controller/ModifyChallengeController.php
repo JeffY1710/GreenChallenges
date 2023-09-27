@@ -42,7 +42,7 @@ class ModifyChallengeController extends AbstractController
             $em->persist($challenge);
             $em->flush();
 
-            return $this->redirectToRoute('show_challenge', ['id' => $challenge->getId()]);
+            return $this->redirectToRoute('app_challenge/modify', ['id' => $challenge->getId()]);
         }
 
         return $this->render('challenge/modify.html.twig', [
