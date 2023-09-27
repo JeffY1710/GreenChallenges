@@ -10,9 +10,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterController extends AbstractController
 {
-    /**
-     * @Route("/register", name="register")
-     */
+    #[Route(path: '/register', name: 'app_register')]
+
     public function new(Request $request){
         $user = new User();
 
