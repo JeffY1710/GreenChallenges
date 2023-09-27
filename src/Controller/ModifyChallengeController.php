@@ -28,12 +28,22 @@ class ModifyChallengeController extends AbstractController
 
         // Créez un formulaire de modification pour ce défi
         $form = $this->createFormBuilder($challenge)
-            ->add('title', TextType::class)
-            ->add('category', TextType::class)
-            ->add('description', TextType::class)
-            ->add('deadline', IntegerType::class)
-            ->add('points', IntegerType::class)
-            ->add('save', SubmitType::class, ['label' => 'Save Changes'])
+            ->add('title', TextType::class, [
+                'label' => 'Titre',
+            ])
+            ->add('category', TextType::class, [
+                'label' => 'Catégorie',
+            ])
+            ->add('description', TextType::class, [
+                'label' => 'Description',
+            ])
+            ->add('deadline', IntegerType::class, [
+                'label' => 'Délai à respecter',
+            ])
+            ->add('points', IntegerType::class, [
+                'label' => 'Nombre de points',
+            ])
+            ->add('save', SubmitType::class, ['label' => 'Sauvegarder les changements'])
             ->getForm();
 
         $form->handleRequest($request);

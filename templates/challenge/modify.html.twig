@@ -3,13 +3,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Edit Challenge</h1>
-    {{ form_start(form) }}
-    {{ form_row(form.title) }}
-    {{ form_row(form.category) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.deadline) }}
-    {{ form_row(form.points) }}
-    {{ form_row(form.save) }}
-    {{ form_end(form) }}
+    <h1 class="title.h1" style="margin-top: 50px">Modifier un défi</h1>
+
+    <div class="form_register"
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.category) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.deadline) }}
+        {{ form_row(form.points) }}
+        {{ form_row(form.save) }}
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}
