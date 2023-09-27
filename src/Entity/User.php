@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -19,47 +20,36 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
-    #[ORM\Column(length: 255, unique:true)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
+
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $birthday = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $password = null;
-
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?int $score = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?int $challenges_realised = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTime $created_at = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserChallenge::class)]
     private Collection $Challenges;
 
-    public function __construct()
-    {
-        $this->Challenges = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): static
-    {
-        $this->username = $username;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -74,19 +64,47 @@ class User
         return $this;
     }
 
-    public function getBirthday(): ?\DateTimeInterface
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->birthday;
+        return (string) $this->email;
     }
 
-    public function setBirthday(\DateTimeInterface $birthday): static
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
     {
-        $this->birthday = $birthday;
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -98,69 +116,23 @@ class User
         return $this;
     }
 
-    public function getScore(): ?int
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
     {
-        return $this->score;
-    }
-
-    public function setScore(int $score): static
-    {
-        $this->score = $score;
-
-        return $this;
-    }
-
-    public function getChallengesRealised(): ?int
-    {
-        return $this->challenges_realised;
-    }
-
-    public function setChallengesRealised(int $challenges_realised): static
-    {
-        $this->challenges_realised = $challenges_realised;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->created_at;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
-    {
-        $this->created_at = $created_at;
-
-        return $this;
+        return null;
     }
 
     /**
-     * @return Collection<int, UserChallenge>
+     * @see UserInterface
      */
-    public function getChallenges(): Collection
+    public function eraseCredentials(): void
     {
-        return $this->Challenges;
-    }
-
-    public function addChallenge(UserChallenge $challenge): static
-    {
-        if (!$this->Challenges->contains($challenge)) {
-            $this->Challenges->add($challenge);
-            $challenge->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChallenge(UserChallenge $challenge): static
-    {
-        if ($this->Challenges->removeElement($challenge)) {
-            // set the owning side to null (unless already changed)
-            if ($challenge->getUser() === $this) {
-                $challenge->setUser(null);
-            }
-        }
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }
