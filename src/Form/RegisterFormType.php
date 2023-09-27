@@ -19,9 +19,7 @@ class RegisterFormType extends AbstractType
         $builder
             ->add('username', TextType::class)
             ->add('email', EmailType::class)
-            ->add('birthday', DateType::class, [
-                'widget' => 'single_text',
-            ])
+            ->add('birthday', DateType::class)
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'first_options'  => ['label' => 'Password'],
