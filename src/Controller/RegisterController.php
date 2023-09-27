@@ -26,7 +26,7 @@ class RegisterController extends AbstractController
             return $this->redirectToRoute('register'); // on redirige vers la route show_task avec l'id du post créé ou modifié 
         }
 
-        return $this->renderForm('register.html.twig', [
+        return $this->renderForm('register/register.html.twig', [
             'form' => $form,
         ]);
     }

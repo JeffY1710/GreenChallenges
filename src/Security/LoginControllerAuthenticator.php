@@ -44,7 +44,7 @@ class LoginControllerAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-        return new RedirectResponse('/register');
+        return new RedirectResponse('/home');
 
         // For example:
         // return new RedirectResponse($this->urlGenerator->generate('some_route'));

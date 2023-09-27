@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -64,6 +65,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+     public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(DateTimeInterface $birthday){
+        $this->birthday = $birthday;
+        return $this;
+    }
     /**
      * A visual identifier that represents this user.
      *
@@ -80,6 +90,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
+
+        return $this;
     }
 
     /**
