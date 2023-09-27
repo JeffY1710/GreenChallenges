@@ -43,6 +43,8 @@ class User
 
     public function __construct()
     {
+        date_default_timezone_set('Europe/Paris');
+
         $this->Challenges = new ArrayCollection();
         $this->score = 0;
         $this->challenges_realised = 0;
