@@ -89,9 +89,9 @@ $challenge = new Challenge();
 
 
     if (isset($data[6]) && (int)$data[6] !== 0) {
-        $challenge->setPoints((int)$data[6]);
+        $challenge->setPoints((int)$data[5]); // Remplacez l'indice par celui correspondant à la colonne des points
     } else {
-        $challenge->setPoints(10);
+        $challenge->setPoints(rand(5, 15));
     }
 
 

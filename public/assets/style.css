@@ -124,3 +124,65 @@ a {
     color : white;
     text-decoration: none;
 }
+
+.form_register {
+    font-size: large;
+    color: #33271e;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form_register input {
+    color: #33271e;
+    font-size: medium;
+    margin-bottom: 10px;
+    background-color: #baab8a;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+
+
+
+.button_valider2 {
+    background-color: #336a20;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+    margin-top: 20px;
+    margin-left: 180px;
+    cursor: pointer;
+}
+
+.button_valider2:hover {
+    background-color: #5f934d;
+}
+
+/* Applique un style aux libellés (labels) */
+.form_register label {
+    display: inline-block;
+    width: 150px; /* Ajustez la largeur en fonction de vos besoins */
+    text-align: justify-all;
+    margin-right: 10px;
+}
+
+/* Applique un style aux champs de saisie (input fields) */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    width: 250px; /* Ajustez la largeur en fonction de vos besoins */
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+
