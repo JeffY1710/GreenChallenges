@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use DateTimeInterface;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\DateType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -36,10 +37,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $birthday = null;
 
-    #[ORM\Column()]
+    #[ORM\Column(options: ["default" => 0])]
     private ?int $score = null;
 
-    #[ORM\Column()]
+    #[ORM\Column(options: ["default" => 0])]
     private ?int $challenges_realised = null;
 
     #[ORM\Column]
@@ -95,6 +96,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername(string $username): static
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getScore(): int
+    {
+        return $this->score;
+    }
+
+    public function setScore(int $score): static
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    public function getChallengeNb(): int
+    {
+        return $this->challenges_realised;
+    }
+
+    public function setChallengeNb(int $challenges_realised): static
+    {
+        $this->challenges_realised = $challenges_realised;
+
+        return $this;
+    }
+
+
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt($created_at): static
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }
