@@ -10,19 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ScoreController extends AbstractController
+class AdminController extends AbstractController
 {
     /**
-     * @Route("/scores", name="app_score")
+     * @Route("/admin", name="app_admin")
      */
 
     public function show(Request $request){
-        $user_connected = $this->getUser();
-        $user = $this->getDoctrine()->getRepository(User::class)->findBy([],['score' => 'DESC'],5);
 
-        return $this->render('score/score.html.twig', array(
-            'users' => $user,
-            'user_info' => $user_connected
-        ));
+        return $this->render('admin/admin.html.twig');
     }
 }

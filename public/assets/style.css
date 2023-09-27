@@ -24,6 +24,15 @@ li{
     list-style-type: none;
 }
 
+#create_btn{
+    margin-top: 50px;
+   padding: 40px;
+   font-size: 30px;
+   border:solid 5px white;
+   border-radius: 20px;
+   background-color: #336a20;
+}
+
 form {
     font-size: large;
     color: #33271e;
