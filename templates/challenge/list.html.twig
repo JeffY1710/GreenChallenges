@@ -1,0 +1,21 @@
+{# templates/challenge/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>List of Challenges</h1>
+    <ul>
+        {% for challenge in challenges %}
+            <li>
+                <p>Title: {{ challenge.title }}</p>
+                <p>Category: {{ challenge.category }}</p>
+                <p>Description: {{ challenge.description }}</p>
+                <p>Deadline: {{ challenge.deadline }}</p>
+                <p>Points: {{ challenge.points }}</p>
+
+                <a href="{{ path('app_challenge/modify', {'id': challenge.id}) }}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ path('app_challenge/create') }}">Create New Challenge</a>
+{% endblock %}

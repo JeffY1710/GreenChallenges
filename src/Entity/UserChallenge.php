@@ -35,6 +35,7 @@ class UserChallenge
     public function __construct()
     {
         $this->UserChallenge = new ArrayCollection();
+        
     }
 
     public function getId(): ?int

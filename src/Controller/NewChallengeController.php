@@ -35,7 +35,7 @@ class NewChallengeController extends AbstractController{
       $em = $this->getDoctrine()->getManager(); // on récupère la gestion des entités
       $em->persist($challenge); // on effectue les mise à jours internes
       $em->flush(); // on effectue la mise à jour vers la base de données
-      return $this->redirectToRoute('show_task', ['id' => $task->getId()]); // on redirige vers la route show_task avec l'id du post créé ou modifié 
+      return $this->redirectToRoute('show_challenge', ['id' => $challenge->getId()]); // on redirige vers la route show_task avec l'id du post créé ou modifié 
     }
 
 
