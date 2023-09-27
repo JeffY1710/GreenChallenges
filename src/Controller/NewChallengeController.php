@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 class NewChallengeController extends AbstractController{
 
 /**
-     * @Route("/create", name="app_challenge/create")
+     * @Route("/challenge/create", name="app_challenge/create")
      */
 
   public function new(Request $request){
