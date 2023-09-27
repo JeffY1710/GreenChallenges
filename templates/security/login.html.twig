@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
+
 
 
 <form method="post">
@@ -17,7 +18,7 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+    <h1 class="h3 mb-3 font-weight-normal" style="margin-bottom: 30px">Connexion</h1>
     <label for="inputEmail">Email</label>
     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
     <label for="inputPassword">Mot de passe</label>
@@ -27,7 +28,7 @@
            value="{{ csrf_token('authenticate') }}"
     >
 
-    <button class="btn btn-lg btn-primary" type="submit">
+    <button class="btn btn-lg btn-primary" onmouseover="this.style.backgroundColor='#5f934d'" onmouseout="this.style.backgroundColor='#336a20'" style="background-color: #336a20; color: white; padding: 10px 20px; border: none; border-radius: 10px; border: solid; border-color: white; border-width: 1px; margin: 20px" type="submit">
         Se connecter
     </button>
 </form>
