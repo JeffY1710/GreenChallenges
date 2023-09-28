@@ -19,24 +19,19 @@ class UserChallenge
     #[ORM\Column(length: 100)]
     private ?string $statut = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable:true)]
     private ?\DateTimeInterface $date_fin = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_fin_obligatoire = null;
 
     #[ORM\ManyToOne(inversedBy: 'Challenges')]
-    #[ORM\JoinColumn(nullable: true)]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'userChallenge', targetEntity: Challenge::class)]
-    private Collection $UserChallenge;
-
-    public function __construct()
-    {
-        $this->UserChallenge = new ArrayCollection();
-        
-    }
+    #[ORM\ManyToOne(inversedBy: 'userChallenge')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Challenge $challenge = null;
 
     public function getId(): ?int
     {
@@ -91,32 +86,14 @@ class UserChallenge
         return $this;
     }
 
-    /**
-     * @return Collection<int, Challenge>
-     */
-    public function getUserChallenge(): Collection
+    public function getChallenge(): ?Challenge
     {
-        return $this->UserChallenge;
+        return $this->challenge;
     }
 
-    public function addUserChallenge(Challenge $userChallenge): static
+    public function setChallenge(?Challenge $challenge): static
     {
-        if (!$this->UserChallenge->contains($userChallenge)) {
-            $this->UserChallenge->add($userChallenge);
-            $userChallenge->setUserChallenge($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUserChallenge(Challenge $userChallenge): static
-    {
-        if ($this->UserChallenge->removeElement($userChallenge)) {
-            // set the owning side to null (unless already changed)
-            if ($userChallenge->getUserChallenge() === $this) {
-                $userChallenge->setUserChallenge(null);
-            }
-        }
+        $this->challenge = $challenge;
 
         return $this;
     }

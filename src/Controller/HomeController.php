@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Challenge; // Assurez-vous d'importer votre entité Defi
+use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
 {

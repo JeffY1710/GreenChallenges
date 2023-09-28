@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\DateType;
 use Doctrine\DBAL\Types\Types;
@@ -48,6 +49,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserChallenge::class)]
     private Collection $Challenges;
+
+    public function __construct()
+    {
+        $this->Challenges = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -189,5 +195,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, UserChallenge>
+     */
+    public function getChallenges(): Collection
+    {
+        return $this->Challenges;
+    }
+
+    public function addChallenge(UserChallenge $challenge): static
+    {
+        if (!$this->Challenges->contains($challenge)) {
+            $this->Challenges->add($challenge);
+            $challenge->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChallenge(UserChallenge $challenge): static
+    {
+        if ($this->Challenges->removeElement($challenge)) {
+            // set the owning side to null (unless already changed)
+            if ($challenge->getUser() === $this) {
+                $challenge->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
