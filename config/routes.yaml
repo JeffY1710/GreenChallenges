@@ -7,5 +7,5 @@ app_challenge_create:
 
 
 app_challenge_modify:
-    path: /challenge/modify
+    path: /challenge/{id}/modify
     controller: App\Controller\NewChallengeController::challenge

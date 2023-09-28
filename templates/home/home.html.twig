@@ -1,15 +1,41 @@
 {% extends 'base.html.twig' %}
 
-
-{% block title %}Home{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            text-align: center;
+        }
 
+        .grid-item a {
+            color: black;
+        }
 
-        <h1 class="title.h1" style="margin-top: 50px">♻️ Challenges disponibles</h1>
+        .grid-item {
+            border: 1px solid black;
+            padding: 10px;
+            background-color: green;
+        }
 
-        <div class="pannel_challenge">
+        .title.h1 {
+            margin-top: 0;
+            color: black;
+        }
+    </style>
 
-        </div>
-
+    <h1 class="title h1">♻️ Challenges disponibles</h1>
+    <div class="grid-container">
+        {% set sortedDefis = defis|sort((a, b) => a.title <=> b.title) %}
+        {% for defi in sortedDefis %}
+            <div class="grid-item">
+                <a href="{{ path('challenge_detail', {'id': defi.id}) }}">{{ defi.title }}</a>
+                {# Ajoutez d'autres informations ici #}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

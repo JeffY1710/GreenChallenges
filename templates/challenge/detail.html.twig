@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1>Challenge Details</h1>
+
+                    {# Ajoutez d'autres informations ici #}
+    {# Ajoutez d'autres détails du challenge ici #}
+
+    <div class="pannel_challenge">
+
+      {# {{ dump(defis.title) }}
+      {{ dump(defis.category) }} #}
+
+
+      <div style="border: 1px solid black; width: 300px; margin-top: 10px; height:300px; padding: 10px; margin: 10px; background-color: green; border: rounded-full; text-align : center; margin : auto">
+      <h2 style="margin-top: 25%;">Défi: {{ defis.title }}</h2>
+      <h2 style="margin-top: 10px;">Catégorie : {{ defis.category }}</h2>
+
+      <h2 style="margin-top: 10px;">Deadline : {{ defis.deadline }}</h2>
+      <h2 style="margin-top: 10px;">Points : {{ defis.points }}</h2>
+
+            {# <a href="{{ path('challenge_modify')}}" class="btn btn-primary">Modifier</a> #}
+      <a href="{{ path('app_challenge_modify', {'id': defis.id}) }}">Modifier</a>
+              {# Ajoutez d'autres informations ici #}
+      </div>
+    </div>
+        
+
+{% endblock %}
+
+
+ 
