@@ -55,7 +55,9 @@ class RegisterFormType extends AbstractType
                 'choices' => $roles,
                 'multiple'  => true,
                 'expanded' => true,
-                'required' => true
+                'required' => true,
+                'attr' => ['class' => 'choice_rank'],
+
             ])
             ->add('Submit', SubmitType::class, [
                 'label' => "S'inscrire",

@@ -42,9 +42,10 @@ class NewChallengeController extends AbstractController{
             'min' => 0
         ]
     ])
-    ->add('save', SubmitType::class, array('label' => 'Créer le challenge')
-
-    )
+    ->add('save', SubmitType::class, [
+        'label' => "Créer le challenge",
+        'attr' => ['class' => 'button_valider2'],
+    ])
     ->getForm();
 
 

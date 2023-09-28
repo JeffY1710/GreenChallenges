@@ -3,7 +3,7 @@
 {% block body %}
 
 
-    <h1>Challenge Details</h1>
+    <h1 class="title h1">Détail du challenge</h1>
 
                     {# Ajoutez d'autres informations ici #}
     {# Ajoutez d'autres détails du challenge ici #}
@@ -14,17 +14,17 @@
       {{ dump(defis.category) }} #}
 
 
-      <div style="border: 1px solid black; width: 300px; margin-top: 10px; height:300px; padding: 10px; margin: 10px; background-color: green; border: rounded-full; text-align : center; margin : auto">
-      <h2 style="margin-top: 25%;">Défi: {{ defis.title }}</h2>
+      <div style="width: 400px; margin-top: 10px; height:300px; padding: 10px; border-radius: 20px; background-color: #5f934d; border: rounded-full; text-align : center; margin : auto">
+      <h2 style="margin-top: 10px;">Défi: {{ defis.title }}</h2>
       <h2 style="margin-top: 10px;">Catégorie : {{ defis.category }}</h2>
 
       <h2 style="margin-top: 10px;">Deadline : {{ defis.deadline }}</h2>
-      <h2 style="margin-top: 10px;">Points : {{ defis.points }}</h2>
+      <h2 style="margin-top: 10px; margin-bottom: 20px">Points : {{ defis.points }}</h2>
 
             {# <a href="{{ path('challenge_modify')}}" class="btn btn-primary">Modifier</a> #}
-      <a href="{{ path('app_challenge_modify', {'id': defis.id}) }}">Modifier</a>
+      <a class="button_maj_detail" href="{{ path('app_challenge_modify', {'id': defis.id}) }}">Modifier</a>
       
-      <a href="{{ path('app_challenge_delete', {'id': defis.id}) }}">Supprimer</a>
+      <a class="button_delete_detail" href="{{ path('app_challenge_delete', {'id': defis.id}) }}">Supprimer</a>
 
 
               {# Ajoutez d'autres informations ici #}
