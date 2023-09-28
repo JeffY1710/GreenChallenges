@@ -14,12 +14,14 @@
 
         .grid-item a {
             color: black;
+
         }
 
         .grid-item {
             border: 1px solid black;
             padding: 10px;
             background-color: green;
+
         }
 
         .title.h1 {
@@ -32,6 +34,7 @@
     <div class="grid-container">
         {% set sortedDefis = defis|sort((a, b) => a.title <=> b.title) %}
         {% for defi in sortedDefis %}
+
             <div class="grid-item">
                 <a href="{{ path('challenge_detail', {'id': defi.id}) }}">{{ defi.title }}</a>
                 {# Ajoutez d'autres informations ici #}
@@ -39,3 +42,4 @@
         {% endfor %}
     </div>
 {% endblock %}
+
