@@ -32,9 +32,15 @@ class NewChallengeController extends AbstractController{
     ])
     ->add('deadline', IntegerType::class, [
         'label' => 'Délai à respecter',
+        'attr' => [
+            'min' => 0
+        ]
     ])
     ->add('points', IntegerType::class, [
         'label' => 'Nombre de points',
+        'attr' => [
+            'min' => 0
+        ]
     ])
     ->add('save', SubmitType::class, array('label' => 'Créer le challenge')
 
