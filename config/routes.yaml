@@ -7,5 +7,10 @@ app_challenge_create:
 
 
 app_challenge_modify:
-    path: /challenge/modify
+    path: /challenge/{id}/modify
     controller: App\Controller\NewChallengeController::challenge
+
+
+app_challenge_delete:
+    path: '/challenge/delete/{id}'
+    controller: 'App\Controller\SuppChallengeController::delete'

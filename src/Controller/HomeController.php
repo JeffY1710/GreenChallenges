@@ -32,20 +32,22 @@ class HomeController extends AbstractController
 
 
     #[Route('/challenge/{id}', name: 'challenge_detail')]
-    public function showChallengeDetail($id): Response
-    {
-        // Récupérez le challenge depuis la base de données en fonction de son ID
-        $defis = $this->getDoctrine()->getRepository(Challenge::class)->find($id);
+public function showChallengeDetail($id): Response
+{
+    // Récupérez le challenge depuis la base de données en fonction de son ID
+    $defis = $this->getDoctrine()->getRepository(Challenge::class)->find($id);
 
-        // dump($defis);
-        // die;
+    // dump($defis);
+    // die;
 
-        if (!$defis) {
-            throw $this->createNotFoundException('Challenge non trouvé avec l\'ID : ' . $id);
-        }
-
-        return $this->render('challenge/detail.html.twig', [
-            'defis' => $defis,
-        ]);
+    if (!$defis) {
+        throw $this->createNotFoundException('Challenge non trouvé avec l\'ID : ' . $id);
     }
+
+    return $this->render('challenge/detail.html.twig', [
+        'defis' => $defis,
+    ]);
 }
+}
+
+
