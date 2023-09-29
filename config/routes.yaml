@@ -14,3 +14,7 @@ app_challenge_modify:
 app_challenge_delete:
     path: '/challenge/delete/{id}'
     controller: 'App\Controller\SuppChallengeController::delete'
+
+# app_challenge_added:
+#     path: '/challenge/{id}/added'
+#     controller: 'App\Controller\UserChallengeController::added'

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use App\Entity\Challenge; // Assurez-vous d'importer votre entité Defi
+use App\Entity\UserChallenge;
 use Symfony\Component\HttpFoundation\Request;
 
 class HomeController extends AbstractController
@@ -40,6 +41,7 @@ public function showChallengeDetail($id): Response
 
     // dump($defis);
     // die;
+ 
 
     if (!$defis) {
         throw $this->createNotFoundException('Challenge non trouvé avec l\'ID : ' . $id);
@@ -47,6 +49,7 @@ public function showChallengeDetail($id): Response
 
     return $this->render('challenge/detail.html.twig', [
         'defis' => $defis,
+        'user' => $this->getUser()
     ]);
 }
 }
