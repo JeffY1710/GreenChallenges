@@ -34,7 +34,7 @@ class Challenge
     #[ORM\Column]
     private ?int $points = null;
 
-    #[ORM\OneToMany(mappedBy: 'challenge', targetEntity: UserChallenge::class)]
+    #[ORM\OneToMany(mappedBy: 'challenge', targetEntity: UserChallenge::class, cascade:["remove"])]
     private Collection $userChallenge;
 
     public function __construct()
