@@ -36,6 +36,7 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: /create, roles: ROLE_ADMIN }
         - { path: /modify, roles: ROLE_ADMIN }
+        - { path: /delete, roles: ROLE_ADMIN }
         - { path: /scores, roles: ROLE_USER }
 
 when@test:
