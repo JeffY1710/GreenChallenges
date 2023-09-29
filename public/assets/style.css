@@ -31,6 +31,7 @@ li{
    border:solid 5px white;
    border-radius: 20px;
    background-color: #336a20;
+
 }
 
 form {
@@ -60,7 +61,7 @@ form label {
 }
 
 .button_nav {
-    background-color: #336a20;
+    background-color: #A2DD9C;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -74,7 +75,7 @@ form label {
 }
 
 .button_nav:hover {
-    background-color: #5f934d;
+    background-color: #78C770;
     scale: 1.1;
 }
 
@@ -89,12 +90,19 @@ form label {
 }
 
 .nav {
-    background-color: #5f934d;
+    background-image: url("https://img.myloview.com/stickers/abstract-green-and-blue-gradient-soft-color-background-ecology-concept-for-your-graphic-design-400-225517510.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     padding: 0;
+    margin: 20px;
+
     display: flex;
     justify-content: space-between;
+    border-radius: 80px;
     align-items: center;
+
 }
 
 .title\.h1 {
@@ -130,6 +138,7 @@ form a {
     padding: 30px;
     border-radius: 30px;
     background-color: #decca5;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .button_delete_detail {
@@ -141,6 +150,12 @@ form a {
 .button_validate_detail2 {
     margin: 5px;
     padding: 5px;
+    background-color: #60D157;
+    border-radius: 5px;
+}
+
+.button_validate_detail {
+    padding: 10px;
     background-color: #60D157;
     border-radius: 5px;
 }
@@ -274,18 +289,35 @@ input[type="date"] {
     text-align: center;
     border-radius: 20px;
     padding: 30px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     background-color: #decca5;
 }
 
 .grid-item a {
     color: black;
+
 }
 
 .grid-item {
     border: 1px solid white;
     border-radius: 20px;
     padding: 10px;
-    background-color: #5f934d;
+    background-image: url("https://i.pinimg.com/originals/30/0e/10/300e10aa0159398b1123dc14ab438d8f.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.grid-item:hover {
+    border: 1px solid white;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #336a20;
+    opacity: 1;
+    scale: 1.1;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 }
 
