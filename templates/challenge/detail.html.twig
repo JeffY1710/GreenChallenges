@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1 class="title h1">Détail du challenge</h1>
+
+                    {# Ajoutez d'autres informations ici #}
+    {# Ajoutez d'autres détails du challenge ici #}
+
+    <div class="pannel_challenge">
+
+      {# {{ dump(defis.title) }}
+      {{ dump(defis.category) }} #}
+
+
+      <div style="box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; width: 400px; margin-top: 10px; height:300px; padding: 10px; border-radius: 20px; background-color: #5f934d; border: rounded-full; text-align : center; margin : auto">
+      <h2 style="margin-top: 10px;">Défi: {{ defis.title }}</h2>
+      <h2 style="margin-top: 10px;">Catégorie : {{ defis.category }}</h2>
+
+      <h2 style="margin-top: 10px;">Deadline : {{ defis.deadline }}</h2>
+      <h2 style="margin-top: 10px; margin-bottom: 20px">Points : {{ defis.points }}</h2>
+
+            {# <a href="{{ path('challenge_modify')}}" class="btn btn-primary">Modifier</a> #}
+
+      {% if is_granted('ROLE_ADMIN') %}
+      <a class="button_maj_detail" href="{{ path('app_challenge_modify', {'id': defis.id}) }}">Modifier</a>
+      <a class="button_delete_detail" href="{{ path('app_challenge_delete', {'id': defis.id}) }}">Supprimer</a>
+      {% endif %}
+
+      {% if user %}
+      <a class="button_validate_detail" href="{{ path('app_added', {'id': defis.id}) }}">Accepter</a>
+      {% endif %}
+
+
+              {# Ajoutez d'autres informations ici #}
+      </div>
+    </div>
+        
+
+{% endblock %}
+
+
+ 
+

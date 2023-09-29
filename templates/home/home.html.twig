@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <h1 class="title h1">♻️ Challenges disponibles</h1>
+    <div class="grid-container">
+        {% set sortedDefis = defis|sort((a, b) => a.title <=> b.title) %}
+        {% for defi in sortedDefis %}
+
+            <div class="grid-item">
+                <a href="{{ path('challenge_detail', {'id': defi.id}) }}">{{ defi.title }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

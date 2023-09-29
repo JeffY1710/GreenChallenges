@@ -1,0 +1,20 @@
+{# templates/challenge/modify.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="title.h1" style="margin-top: 50px">Modifier un défi</h1>
+
+    <form method="post" class="form2">
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.category) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.deadline) }}
+        {{ form_row(form.points) }}
+        {{ form_row(form.save) }}
+        {{ form_end(form) }}
+    </form>
+    </div>
+
+{% endblock %}

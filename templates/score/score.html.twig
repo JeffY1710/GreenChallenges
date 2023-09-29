@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    <h1 class="title.h1" style="margin-top: 50px">Mon score</h1>
+    <h3 class="perso_score">{{user_info.username}} : <span>{{user_info.score}}</span></h3><br>
+
+
+    <h2>Classement général</h2>
+    <br>
+    <ul class="ul_score">
+    <li>Pseudo : Score : Position</li><br>
+    {% set user_pos = 0 %}
+    {% for user in users %}
+        {% set user_pos = user_pos + 1 %}
+        <li>{{ user.username}} | {{user.score}} | {{user_pos}}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
