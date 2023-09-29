@@ -100,11 +100,11 @@
 
         <div class = "pannel_account02">
             <h2>Mes défis réalisés</h2>
-            <p>Titre | Délai | Points</p>
+            <p class="name_colonne_score">Titre | Délai | Points</p>
             {% for userchallenge in user.challenges %}
                 <p>{{ userchallenge.challenge.title}} | {{ userchallenge.challenge.deadline}} jours| {{ userchallenge.challenge.points}}</p>
                 {% if userchallenge.statut == 'Accepted' %}
-                <a href=''>Confirmer</a>
+                <a class="button_validate_detail2" href=''>Confirmer</a>
                 {% endif %}
             {% endfor %}
         </div>

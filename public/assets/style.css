@@ -138,6 +138,22 @@ form a {
     border-radius: 5px;
 }
 
+.button_validate_detail2 {
+    margin: 5px;
+    padding: 5px;
+    background-color: #60D157;
+    border-radius: 5px;
+}
+
+.name_colonne_score {
+    margin: 20px;
+    background-color: #baab8a;
+    border-radius: 3px;
+    padding: 10px;
+
+
+}
+
 .button_maj_detail {
     padding: 10px;
     background-color: #70AAF5;
