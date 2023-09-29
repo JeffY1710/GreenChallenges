@@ -199,3 +199,68 @@ input[type="date"] {
 }
 
 
+.pannel_account_general {
+    width: 80%;
+    height: 700px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #baab8a;
+    display: flex;
+    justify-content: space-around;
+    color: #33271e;
+
+}
+
+.h1_account {
+    margin-top: 20px;
+}
+
+.pannel_account01 {
+    margin-top: 50px;
+    border: none;
+    border-radius: 20px;
+    width: 40%;
+    height: 600px;
+    background-color: #decca5;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.pannel_account02 {
+    margin-top: 50px;
+    border: none;
+    border-radius: 20px;
+    background-color: #decca5;
+    width: 40%;
+    height: 600px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pannel_account02 h2{
+    margin-top: 10px;
+}
+
+.pannel_account01 h2{
+    margin-top: 10px;
+
+}
+
+.infos {
+    margin-top: 40px;
+}
+
+.button_logout_account {
+    background-color: #E96B4F;
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
