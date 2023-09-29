@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ChallengeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,9 +34,13 @@ class Challenge
     #[ORM\Column]
     private ?int $points = null;
 
-    #[ORM\ManyToOne(inversedBy: 'UserChallenge')]
-    #[ORM\JoinColumn(nullable: true)]
-    private ?UserChallenge $userChallenge = null;
+    #[ORM\OneToMany(mappedBy: 'challenge', targetEntity: UserChallenge::class)]
+    private Collection $userChallenge;
+
+    public function __construct()
+    {
+        $this->userChallenge = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -46,7 +52,7 @@ class Challenge
         return $this->title;
     }
 
-    public function setTitle(string $title): static
+    public function setTitle(string $title)
     {
         $this->title = $title;
 
@@ -113,14 +119,32 @@ class Challenge
         return $this;
     }
 
-    public function getUserChallenge(): ?UserChallenge
+    /**
+     * @return Collection<int, UserChallenge>
+     */
+    public function getUserChallenge(): Collection
     {
         return $this->userChallenge;
     }
 
-    public function setUserChallenge(?UserChallenge $userChallenge): static
+    public function addUserChallenge(UserChallenge $userChallenge): static
     {
-        $this->userChallenge = $userChallenge;
+        if (!$this->userChallenge->contains($userChallenge)) {
+            $this->userChallenge->add($userChallenge);
+            $userChallenge->setChallenge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserChallenge(UserChallenge $userChallenge): static
+    {
+        if ($this->userChallenge->removeElement($userChallenge)) {
+            // set the owning side to null (unless already changed)
+            if ($userChallenge->getChallenge() === $this) {
+                $userChallenge->setChallenge(null);
+            }
+        }
 
         return $this;
     }
