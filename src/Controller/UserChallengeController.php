@@ -10,8 +10,10 @@ use App\Entity\Challenge; // Assurez-vous d'importer votre entité Defi
 use App\Entity\User;
 use App\Entity\UserChallenge;
 use App\Form\AddUserChallenge;
+use DateTime;
 use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 class UserChallengeController extends AbstractController
 {
@@ -20,28 +22,20 @@ class UserChallengeController extends AbstractController
     {
         $user_challenge = new UserChallenge();
         $defis = $this->getDoctrine()->getRepository(Challenge::class)->find($id);
-        $allUsers = $this->getDoctrine()->getRepository(User::class)->findAll();
-
-        foreach ($allUsers as $user) { 
-            if ($user == $this->getUser()){
-                $userId = $user->getId();
-            }
-        }
-
+        $user = $this->getUser(); 
+        date_default_timezone_set('Europe/Paris');
+        $date = new DateTime();
         $defisDelai = $defis->getDeadline();
-        $defisId = $defis->getId();
-
-        $user_challenge->setChallenge($defisId);
+        date_add($date,date_interval_create_from_date_string($defisDelai."days"));
+        
+        $user_challenge->setChallenge($defis);
         $user_challenge->setStatut('Accepted');
-        $user_challenge->setUser($userId);
-        $user_challenge->setDateFinObligatoire($defisDelai);
+        $user_challenge->setUser($user);
+        $user_challenge->setDateFinObligatoire($date);
 
         
-        $form = $this->createForm(AddUserChallenge::class, $defis);
-        
-        $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
-        $em->persist($defis);
+        $em->persist($user_challenge);
         $em->flush();
         
         return $this->redirectToRoute('app_home', ['id' => $defis->getId()]
