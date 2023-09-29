@@ -83,13 +83,12 @@
             <h2>Mes informations</h2>
 
             <div class="infos">
-                <p>{{ 'Nom' }} : {{ username }}</p>
+                <p>{{ 'Nom' }} : {{ user.username }}</p>
                 <br>
-                <p>{{ 'Date de naissance' }} : {{ birthday ? birthday|date('d/m/Y') : '' }}</p>
+                <p>{{ 'Date de naissance' }} : {{ user.birthday ? user.birthday|date('d/m/Y') : '' }}</p>
                 <br>
-                <p>{{ 'Email' }} : {{ email }}</p>
+                <p>{{ 'Email' }} : {{ user.email }}</p>
                 <br>
-                <p>{{ 'Date de création' }} : {{ created_at ? created_at|date('d/m/Y à H:i:s') : '' }}</p>
                 <br>
                 <br>
 
@@ -101,6 +100,13 @@
 
         <div class = "pannel_account02">
             <h2>Mes défis réalisés</h2>
+            <p>Titre | Délai | Points</p>
+            {% for userchallenge in user.challenges %}
+                <p>{{ userchallenge.challenge.title}} | {{ userchallenge.challenge.deadline}} jours| {{ userchallenge.challenge.points}}</p>
+                {% if userchallenge.statut == 'Accepted' %}
+                <a href=''>Confirmer</a>
+                {% endif %}
+            {% endfor %}
         </div>
 
     </div>
