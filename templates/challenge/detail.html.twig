@@ -22,9 +22,14 @@
       <h2 style="margin-top: 10px; margin-bottom: 20px">Points : {{ defis.points }}</h2>
 
             {# <a href="{{ path('challenge_modify')}}" class="btn btn-primary">Modifier</a> #}
-      <a class="button_maj_detail" href="{{ path('app_challenge_modify', {'id': defis.id}) }}">Modifier</a>
 
-      <a class="button_delete_detail" href="{{ path('app_challenge_delete', {'id': defis.id}) }}">Supprimer</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                  <a class="button_maj_detail" href="{{ path('app_challenge_modify', {'id': defis.id}) }}">Modifier</a>
+
+                  <a class="button_delete_detail" href="{{ path('app_challenge_delete', {'id': defis.id}) }}">Supprimer</a>
+            {% endif %}
+
+    
       <a href="/added">Accepter</a>
 
               {# Ajoutez d'autres informations ici #}
