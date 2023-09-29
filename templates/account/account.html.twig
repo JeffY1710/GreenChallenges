@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+
+
+    <style>
+        .pannel_account_general {
+            width: 80%;
+            height: 700px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #baab8a;
+            display: flex;
+            justify-content: space-around;
+            color: #33271e;
+
+        }
+
+        .h1_account {
+            margin-top: 20px;
+        }
+
+        .pannel_account01 {
+            margin-top: 50px;
+            border: none;
+            border-radius: 20px;
+            width: 40%;
+            height: 600px;
+            background-color: #decca5;
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .pannel_account02 {
+            margin-top: 50px;
+            border: none;
+            border-radius: 20px;
+            background-color: #decca5;
+            width: 40%;
+            height: 600px;
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .pannel_account02 h2{
+            margin-top: 10px;
+        }
+
+        .pannel_account01 h2{
+            margin-top: 10px;
+
+        }
+
+        .infos {
+            margin-top: 40px;
+        }
+
+        .button_logout_account {
+            background-color: #E96B4F;
+            padding: 7px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+
+
+    </style>
+
+    <h1 class="h1_account">Mon compte</h1>
+
+    <div class="pannel_account_general">
+
+        <div class = "pannel_account01">
+            <h2>Mes informations</h2>
+
+            <div class="infos">
+                <p>{{ 'Nom' }} : {{ username }}</p>
+                <br>
+                <p>{{ 'Date de naissance' }} : {{ birthday ? birthday|date('d/m/Y') : '' }}</p>
+                <br>
+                <p>{{ 'Email' }} : {{ email }}</p>
+                <br>
+                <p>{{ 'Date de création' }} : {{ created_at ? created_at|date('d/m/Y à H:i:s') : '' }}</p>
+                <br>
+                <br>
+
+                <a href="{{ path('app_logout') }}" class="button_logout_account">Déconnexion</a>
+
+            </div>
+
+        </div>
+
+        <div class = "pannel_account02">
+            <h2>Mes défis réalisés</h2>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

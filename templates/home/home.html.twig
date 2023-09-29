@@ -3,32 +3,6 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .grid-item a {
-            color: black;
-
-        }
-
-        .grid-item {
-            border: 1px solid black;
-            padding: 10px;
-            background-color: green;
-
-        }
-
-        .title.h1 {
-            margin-top: 0;
-            color: black;
-        }
-    </style>
 
     <h1 class="title h1">♻️ Challenges disponibles</h1>
     <div class="grid-container">
@@ -37,7 +11,6 @@
 
             <div class="grid-item">
                 <a href="{{ path('challenge_detail', {'id': defi.id}) }}">{{ defi.title }}</a>
-                {# Ajoutez d'autres informations ici #}
             </div>
         {% endfor %}
     </div>
