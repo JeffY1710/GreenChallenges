@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints\Date;
 class UserChallengeController extends AbstractController
 {
     #[Route(path: '/challenge/{id}/added', name: 'app_added')]
-    public function index(Request $request, $id)
+    public function add(Request $request, $id)
     {
         $user_challenge = new UserChallenge();
         $defis = $this->getDoctrine()->getRepository(Challenge::class)->find($id);
@@ -39,6 +39,24 @@ class UserChallengeController extends AbstractController
         $em->flush();
         
         return $this->redirectToRoute('app_home', ['id' => $defis->getId()]
+    );
+    }
+
+    #[Route(path: '/account/{id}/{challScore}/confirm', name: 'app_confirm')]
+    public function confirm(Request $request, $id, $challScore)
+    {
+        $defis = $this->getDoctrine()->getRepository(UserChallenge::class)->find($id);
+        $user = $this->getUser();
+
+        $defis->setStatut('Confirmed');
+        $user->setScore($challScore + $user->getScore());
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($defis);
+        $em->persist($user);
+        $em->flush();
+        
+        return $this->redirectToRoute('app_account', ['id' => $defis->getId()]
     );
     }
 
