@@ -44,6 +44,16 @@ form {
     flex-direction: column;
 }
 
+.form2{
+    font-size: large;
+    color: #33271e;
+    margin: 0 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 form input {
     color: #33271e;
     font-size: medium;
