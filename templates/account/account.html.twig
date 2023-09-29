@@ -102,10 +102,9 @@
             <h2>Mes défis réalisés</h2>
             <p class="name_colonne_score">Titre | Délai | Points</p>
             {% for userchallenge in user.challenges %}
-                <p>{{ userchallenge.challenge.title}} | {{ userchallenge.challenge.deadline}} jours| {{ userchallenge.challenge.points}}</p>
-                {% if userchallenge.statut == 'Accepted' %}
-                <a class="button_validate_detail2" href=''>Confirmer</a>
-                {% endif %}
+                <p>{{ userchallenge.challenge.title}} | {{ userchallenge.challenge.deadline}} jours| {{ userchallenge.challenge.points}} {% if userchallenge.statut == 'Accepted' %}
+                <a class="button_validate_detail2" href='{{ path('app_confirm', {'id': userchallenge.id, 'challScore': userchallenge.challenge.points}) }}'>Confirmer</a><br>
+                {% endif %} </p><br>
             {% endfor %}
         </div>
 
