@@ -43,7 +43,10 @@ class ModifyChallengeController extends AbstractController
             ->add('points', IntegerType::class, [
                 'label' => 'Nombre de points',
             ])
-            ->add('save', SubmitType::class, ['label' => 'Sauvegarder les changements'])
+            ->add('save', SubmitType::class, [
+                'label' => "Sauvegarder les changements",
+                'attr' => ['class' => 'button_valider3'],
+            ])
             ->getForm();
 
         $form->handleRequest($request);
