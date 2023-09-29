@@ -31,7 +31,7 @@ class NewChallengeController extends AbstractController{
         'label' => 'Description',
     ])
     ->add('deadline', IntegerType::class, [
-        'label' => 'Délai à respecter',
+        'label' => 'Délai à respecter (en jours)',
         'attr' => [
             'min' => 0
         ]
